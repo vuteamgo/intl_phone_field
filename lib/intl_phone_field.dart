@@ -311,8 +311,18 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
   String? validatorMessage;
 
   @override
+  void didUpdateWidget(IntlPhoneField oldWidget) {
+    _init();
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   void initState() {
     super.initState();
+    _init();
+  }
+
+  void _init() {
     _countryList = widget.countries ?? countries;
     filteredCountries = _countryList;
     number = widget.initialValue ?? '';
